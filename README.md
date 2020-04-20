@@ -12,6 +12,31 @@ Here are the limitations:
 
 ## Installation
 
+### From Vaadin Directory
+
+Maven dependency:
+```
+<dependency>
+   <groupId>org.vaadin.miki</groupId>
+   <artifactId>super-template</artifactId>
+   <version>0.1.0</version>
+</dependency>
+```
+
+Maven repository:
+```
+<repository>
+   <id>vaadin-addons</id>
+   <url>https://maven.vaadin.com/vaadin-addons</url>
+</repository>
+```
+
+### From GitHub packages
+
+Follow instructions: https://github.com/vaadin-miki/super-template/packages
+
+## Using
+
 ### Manual
 
 Simply extend your custom template Java class from `SuperTemplate` instead of `PolymerTemplate`.
