@@ -3,6 +3,7 @@ package org.vaadin.miki.supertemplate;
 import com.vaadin.flow.component.HasText;
 import com.vaadin.flow.component.icon.Icon;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -46,9 +47,10 @@ public class TemplateFieldConfigurators {
 
     /**
      * Contains all of the {@link TemplateFieldConfigurator}s defined as {@code public static final} fields in this class.
+     * This array can be modified and it will affect all templates.
      */
-    public static final Collection<TemplateFieldConfigurator> DEFAULT_CONFIGURATORS = Arrays.asList(
+    public static final Collection<TemplateFieldConfigurator> DEFAULT_CONFIGURATORS = new ArrayList<>(Arrays.asList(
             SET_TEXT, CREATE_STANDALONE_ICON, UPDATE_BUTTON_ICON
-    );
+    ));
 
 }
