@@ -6,7 +6,7 @@
 
     <groupId>org.vaadin.miki</groupId>
     <artifactId>super-template</artifactId>
-    <version>0.1.0</version>
+    <version>0.2-SNAPSHOT</version>
 
     <name>Super Template</name>
     <description>An extension of PolymerTemplate that reads properties from the template and makes them available on the server side. Requires Vaadin 14.X.</description>
