@@ -10,6 +10,24 @@ Here are the limitations:
 * it only works for fields that are annotated in Java with `@Id` and have an `id` attribute set in the template file (in Designer terms - components that are linked to the Java companion file); 
 * it only supports passing of attributes present in the HTML markup when there is a corresponding setter that accepts `String`; for example, `<my-component attr="value">` will call `public void setAttr(String s)` - if the method is missing, nothing will happen.
 
+## Installation
+
+### Manual
+
+Simply extend your custom template Java class from `SuperTemplate` instead of `PolymerTemplate`.
+
+### Vaadin Designer
+
+This only works with Vaadin Designer version 4.4.2 and above (released 25th of March, 2020).
+
+Locate your `.vaadin/designer/project-settings.json` file. Add the following property:
+
+```
+  "--design.companion.basetype": "org.vaadin.miki.supertemplate.SuperTemplate<{{ClassName}}.{{ClassName}}Model>"
+```
+
+More information: https://github.com/vaadin/designer/issues/2257
+
 ## How it works
 
 The constructor of `SuperTemplate` delegates the magic of initialising the fields to `TemplateProcessor` passed as a constructor argument. Unless specified, `SimpleTemplateProcessor` will be used.
