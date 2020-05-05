@@ -2,6 +2,7 @@ package org.vaadin.miki.supertemplate;
 
 import com.github.mvysny.kaributesting.v10.MockNpmTemplateParser;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.textfield.TextField;
 import org.junit.After;
@@ -47,6 +48,10 @@ public class SuperTemplateTest {
         Assert.assertNotNull(span);
         Assert.assertEquals("a-span", span.getId().orElse(null));
         Assert.assertEquals("World", span.getText());
+        Grid<Dummy> grid = superView.getGrid();
+        Assert.assertNotNull(grid);
+        Assert.assertSame(Dummy.class, grid.getBeanType());
+        Assert.assertNotNull(grid.addColumn("contents")); // adding columns should work
     }
 
     @Test
@@ -57,6 +62,15 @@ public class SuperTemplateTest {
         Assert.assertFalse(vaadinView.getTextField().getId().isPresent());
         Assert.assertNull(vaadinView.getTextField().getPlaceholder());
         Assert.assertFalse(vaadinView.getSpan().getId().isPresent());
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testVaadinViewDoesNotHaveProperGrid() {
+        VaadinView vaadinView = new VaadinView();
+        Assert.assertNotNull(vaadinView);
+        Assert.assertNotNull(vaadinView.getGrid());
+        Assert.assertNull(vaadinView.getGrid().getBeanType());
+        vaadinView.getGrid().addColumn("contents");
     }
 
 }

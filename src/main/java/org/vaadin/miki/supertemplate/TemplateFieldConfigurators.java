@@ -46,11 +46,16 @@ public class TemplateFieldConfigurators {
     public static final TemplateFieldConfigurator UPDATE_BUTTON_ICON = new UpdateButtonIconConfigurator();
 
     /**
+     * Updates a grid to have a bean type, if declared in the Java class through generics.
+     */
+    public static final TemplateFieldConfigurator GRID_BEAN_TYPE = new GridBeanTypeConfigurator();
+
+    /**
      * Contains all of the {@link TemplateFieldConfigurator}s defined as {@code public static final} fields in this class.
      * This array can be modified and it will affect all templates.
      */
     public static final Collection<TemplateFieldConfigurator> DEFAULT_CONFIGURATORS = new ArrayList<>(Arrays.asList(
-            SET_TEXT, CREATE_STANDALONE_ICON, UPDATE_BUTTON_ICON
+            SET_TEXT, CREATE_STANDALONE_ICON, UPDATE_BUTTON_ICON, GRID_BEAN_TYPE
     ));
 
 }
