@@ -1,6 +1,6 @@
 # SuperTemplate
 
-This is an extension of Vaadin 14.X `PolymerTemplate` class. It enables server-side access to properties defined in the template file, which is normally not possible.
+This is an extension of Vaadin 14.X `PolymerTemplate` class. It enables server-side access to properties defined in the template file, which is normally not possible. It also attempts to solve a few general issues with templates.
 
 ## Limitations
 
@@ -19,7 +19,7 @@ Maven dependency:
 <dependency>
    <groupId>org.vaadin.miki</groupId>
    <artifactId>super-template</artifactId>
-   <version>0.1.0</version>
+   <version>0.2.0</version>
 </dependency>
 ```
 
@@ -77,10 +77,11 @@ For each attribute:
 
 ## Default behaviour
 
-Unless changed, after setting each field according to its attributes, the object will go through extra configuration. This is defined by `TemplateFieldConfigurator` and by default three of those are available:
+Unless changed, after setting each field according to its attributes, the object will go through extra configuration. This is defined by `TemplateFieldConfigurator` and by default those are available:
 * if the value implements `HasText`, its `setText` method will be called with the text found in the element;
 * if the value is an `Icon`, its server-side `Icon` will be changed to reflect the one specified in the element;
-* if the value is a `Button` and the element has an icon, the icon will be set on the server side.
+* if the value is a `Button` and the element has an icon, the icon will be set on the server side;
+* if the value is a `Grid` and it is declared in the file as `Grid<BeanType>`, the field will be configured as if `new Grid<>(BeanType.class)` was called.
 
 The default configurators can be skipped by:
 * passing a `false` flag to the `SuperTemplate` constructor - for that particular template only;
