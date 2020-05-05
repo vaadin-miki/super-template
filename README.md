@@ -81,11 +81,19 @@ Unless changed, after setting each field according to its attributes, the object
 * if the value implements `HasText`, its `setText` method will be called with the text found in the element;
 * if the value is an `Icon`, its server-side `Icon` will be changed to reflect the one specified in the element;
 * if the value is a `Button` and the element has an icon, the icon will be set on the server side;
-* if the value is a `Grid` and it is declared in the file as `Grid<BeanType>`, the field will be configured as if `new Grid<>(BeanType.class)` was called.
+* if the value is a `Grid` and it is declared in the file as `Grid<BeanType>`, the field will be configured as if `new Grid<>(BeanType.class)` was called; in addition columns can be added (see below).
 
 The default configurators can be skipped by:
 * passing a `false` flag to the `SuperTemplate` constructor - for that particular template only;
 * calling `TemplateFieldConfigurators.DEFAULT_CONFIGURATORS.clear()` - for all templates (does not apply retroactively to templates that were created before executing that code).
+
+### Adding columns to `Grid<MyBean>`
+
+Under certain conditions columns can be specified in the design. First of all, the `Grid` must be typed in Java (so `@Id("id-of-grid") private Grid<MyBean> grid`). Then:
+* (**recommended**) columns from `data-columns` attribute on `vaadin-grid`, if that attribute is present; the list should be space-separated list of properties, and for each property server-side object will use `addColumn(propertyName)`
+* (**experimental**) columns from `vaadin-grid-column` are taken if they have an attribute `data-column`; again, server-side object will use `addcolumn(name)`
+
+Feel free to file an issue if there are problems with either of the approaches.
 
 ## Extending default behaviour
 

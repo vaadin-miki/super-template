@@ -13,7 +13,9 @@ export class TestView extends PolymerElement {
             </style>
 <vaadin-text-field id="a-text-field" placeholder="Hello" style="width: 100%;"></vaadin-text-field>
 <span id="a-span">World</span>
-<vaadin-grid id="a-grid"></vaadin-grid>
+<vaadin-grid id="a-grid" data-columns="description">
+    <vaadin-grid-column data-column="flagged"></vaadin-grid-column>
+</vaadin-grid>
 `;
     }
 
