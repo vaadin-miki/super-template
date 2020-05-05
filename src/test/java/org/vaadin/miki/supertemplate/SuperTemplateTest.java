@@ -51,6 +51,10 @@ public class SuperTemplateTest {
         Grid<Dummy> grid = superView.getGrid();
         Assert.assertNotNull(grid);
         Assert.assertSame(Dummy.class, grid.getBeanType());
+        // there should be two columns already in the grid: description and flagged, added in that order
+        Assert.assertEquals(2, grid.getColumns().size());
+        Assert.assertEquals("description", grid.getColumns().get(0).getKey());
+        Assert.assertEquals("flagged", grid.getColumns().get(1).getKey());
         Assert.assertNotNull(grid.addColumn("contents")); // adding columns should work
     }
 
