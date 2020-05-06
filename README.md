@@ -19,7 +19,7 @@ Maven dependency:
 <dependency>
    <groupId>org.vaadin.miki</groupId>
    <artifactId>super-template</artifactId>
-   <version>0.2.1</version>
+   <version>0.2.2</version>
 </dependency>
 ```
 
